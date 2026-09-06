@@ -1,18 +1,39 @@
-class Solution {
-    public int maxProfit(int[] prices) {
-        int lsf = Integer.MAX_VALUE;
-        int op = 0;
-        int pist = 0;
+// class Solution {
+//     public int maxProfit(int[] prices) {
+//         int lsf = Integer.MAX_VALUE;
+//         int op = 0;
+//         int pist = 0;
         
-        for(int i = 0; i < prices.length; i++){
-            if(prices[i] < lsf){
-                lsf = prices[i];
+//         for(int i = 0; i < prices.length; i++){
+//             if(prices[i] < lsf){
+//                 lsf = prices[i];
+//             }
+//             pist = prices[i] - lsf;
+//             if(op < pist){
+//                 op = pist;
+//             }
+//         }
+//         return op;
+//     }
+// }
+public class Solution {
+    public int maxProfit(int[] prices) {
+        int minPrice = Integer.MAX_VALUE;
+        int maxProfit = 0;
+
+        for (int i = 0; i < prices.length; i++) {
+            
+            if (prices[i] < minPrice) {
+                minPrice = prices[i];
             }
-            pist = prices[i] - lsf;
-            if(op < pist){
-                op = pist;
+
+            int profit = prices[i] - minPrice;
+
+            if (profit > maxProfit) {
+                maxProfit = profit;
             }
         }
-        return op;
+
+        return maxProfit;
     }
 }
